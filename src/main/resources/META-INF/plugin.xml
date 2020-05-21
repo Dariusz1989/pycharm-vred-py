@@ -1,0 +1,55 @@
+<idea-plugin>
+    <id>de.chr33z.pycharm-vred-py</id>
+    <name>VRED-Py</name>
+    <version>0.1.0</version>
+    <vendor email="chr33z@gmail.com" url="https://github.com/chr33z">Christopher Gebhardt</vendor>
+
+    <description><![CDATA[
+      <p>This plugin adds support for VRED Python API auto completion and documentation.</p>
+      <p>
+        Features:
+        <ul>
+          <li>Autocomplete for VRED API v1 and v2</li>
+          <li>Support for VRED 2021</li>
+        </ul>
+        Usage:
+        <ul>
+          <li>This plugin adds the entry 'VRED-Py' to the main menu.</li>
+          <li>Press 'VRED-Py/Add VRED API Modules to Project' to add the VRED Python API modules to your project path.</li>
+          <li>Restart PyCharm to see auto completion.</li>
+        </ul>
+      </p>
+      <p>This plugin is still under development and marked as 'alpha'. If you have any issues please let the developer know! Email me under: chr33z@gmail.com</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      <ul>
+        <li>
+          Version 0.1-alpha:
+          <ul>
+            <li>Autocomplete for VRED API v1 and v2</li>
+            <li>Documentation for VRED API v1 and v2</li>
+          </uL>
+        </li>
+      </ul>
+      <strong>Known Issues:</strong>
+      <ul>
+        <li>Project has to be reloaded after adding VRED Python Modules in order to use autocompletion</li>
+        <li>Some issues with python type hintings</li>
+        <li>Incomplete Documentation for VRED API</li>
+      </ul>
+    ]]>
+    </change-notes>
+
+    <depends>com.intellij.modules.python</depends>
+
+    <actions>
+        <group id="VredPyGroup" text="VRED-Py">
+            <action id="VredPy.VredAction" class="de.chr33z.pycharm.vred.VredAction"
+                    text="Add VRED API Modules to Project"
+                    description="Add VRED API Modules to Project">
+            </action>
+            <add-to-group group-id="MainMenu" relative-to-action="ToolsMenu" anchor="after"/>
+        </group>
+    </actions>
+</idea-plugin>
