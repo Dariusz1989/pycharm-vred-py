@@ -2,6 +2,7 @@ package de.chr33z.pycharm.vred;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ProjectRootManager;
@@ -62,6 +63,26 @@ public class VredAction extends AnAction {
 
     @Override
     public void update(@NotNull final AnActionEvent event) {
+        Presentation presentation = event.getPresentation();
+        Project project = event.getProject();
+
+        if (project == null) {
+            presentation.setEnabled(false);
+            return;
+        }
+
+        Sdk sdk = ProjectRootManager.getInstance(project).getProjectSdk();
+        if (sdk == null) {
+            presentation.setEnabled(false);
+            return;
+        }
+
+        if (!sdk.getName().toLowerCase().contains("python")) {
+            presentation.setEnabled(false);
+            return;
+        }
+
+        presentation.setEnabled(true);
     }
 
     private void setAdditionalPythonPath(Sdk sdk, Path pythonApiDirectory) {
