@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.chr33z'
-version '1.0'
+version '0.1.1'
 
 def hasPyCharm = project.hasProperty('pycharmPath')
 def hasPythonPlugin = project.hasProperty('pythonPlugin')
@@ -44,7 +44,4 @@ patchPluginXml {
     version project.property('version')
     sinceBuild project.property('sinceBuild')
     untilBuild project.property('untilBuild')
-    changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
 }
